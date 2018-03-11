@@ -79,7 +79,7 @@
         android:layout_gravity="bottom"
         android:background="@color/white"
         android:orientation="horizontal"
-        app:layout_behavior="home.smart.fly.zhihuindex.behavior.BottomViewBehavior">
+        app:layout_behavior="home.smart.fly.scucommunity.behavior.BottomViewBehavior">
 
         <RadioGroup
             android:id="@+id/tabs_rg"

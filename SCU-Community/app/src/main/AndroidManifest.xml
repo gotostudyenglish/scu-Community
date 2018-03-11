@@ -6,13 +6,13 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/zhihu_app"
-        android:label="@string/app_name"
+        android:icon="@mipmap/chuan"
+        android:label="川大问答"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
             android:name="home.smart.fly.scucommunity.MainActivity"
-            android:label="@string/app_name">
+            android:label="川大问答">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
