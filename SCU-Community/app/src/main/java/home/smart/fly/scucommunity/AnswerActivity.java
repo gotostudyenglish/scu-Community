@@ -25,15 +25,15 @@ public class AnswerActivity extends AppCompatActivity {
     }
 
     private void initAnswer(){
-        Answer zhaowei = new Answer("赵伟","给他爸爸妈妈打电话吧");
+        Answer zhaowei = new Answer();
         answerList.add(zhaowei);
-        Answer zengguanhui = new Answer("曾光辉","让学校把它开除了");
+        Answer zengguanhui = new Answer();
         answerList.add(zengguanhui);
-        Answer zhouzicheng = new Answer("周子晨","鬼鬼，打牌居然不叫我，我要到公安局举报你们,樱樱樱");
+        Answer zhouzicheng = new Answer();
         answerList.add(zhouzicheng);
-        Answer wangyuxuan = new Answer("王宇轩","我不要，你拿，我的牌有点问题");
+        Answer wangyuxuan = new Answer();
         answerList.add(wangyuxuan);
-        Answer chenhang = new Answer("陈航","我闷抓");
+        Answer chenhang = new Answer();
         answerList.add(chenhang);
     }
 

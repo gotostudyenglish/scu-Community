@@ -12,11 +12,6 @@ public class Answer extends DataSupport {
     private String Question_ID;
     private String Name;
 
-    public Answer(String name,String context){
-        this.Name = name;
-        this.Content = context;
-    }
-
 
     public String getQuestion_ID(){
         return Question_ID;
@@ -30,6 +25,7 @@ public class Answer extends DataSupport {
     public String getAnswer_ID(){
         return Answer_ID;
     }
+
 
     public void setName(String Name){
         this.Name = Name;
