@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,7 +33,7 @@ public class ListItemMenu extends PopupWindow {
         setFocusable(true);
         setBackgroundDrawable(new ColorDrawable(00000000));
         TextView like = (TextView) view.findViewById(R.id.like);
-        TextView collect = (TextView) view.findViewById(R.id.collect);
+
         like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,12 +44,6 @@ public class ListItemMenu extends PopupWindow {
             }
         });
 
-        collect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(mContext, "collect it", Toast.LENGTH_SHORT).show();
 
-            }
-        });
     }
 }

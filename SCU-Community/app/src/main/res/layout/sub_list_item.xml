@@ -8,6 +8,7 @@
 
 
     <LinearLayout
+        android:id="@+id/sub_normalList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -41,6 +42,7 @@
                 android:src="@drawable/profile" />
 
             <TextView
+                android:id="@+id/sub_from"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -52,7 +54,7 @@
 
 
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/sub_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
@@ -63,7 +65,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/sub_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
@@ -84,6 +86,7 @@
 
 
             <TextView
+                android:id="@+id/sub_likenum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="225 赞" />
@@ -95,20 +98,11 @@
                 android:text="·" />
 
             <TextView
+                android:id="@+id/sub_answernum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="23 评论" />
+                android:text="23 回答" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="3dp"
-                android:text="·" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="关注问题" />
 
         </LinearLayout>
 

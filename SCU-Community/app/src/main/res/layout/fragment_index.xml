@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/write"
             android:id="@+id/write"
-            fab:fab_label="写文章" />
+            fab:fab_label="提问" />
 
 
 

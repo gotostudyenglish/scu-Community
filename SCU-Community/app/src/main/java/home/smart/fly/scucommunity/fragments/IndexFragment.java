@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import home.smart.fly.scucommunity.AnswerActivity;
+import home.smart.fly.scucommunity.AskQuestionActivity;
 import home.smart.fly.scucommunity.R;
 import home.smart.fly.scucommunity.adapter.IndexRecyclerViewAdapter;
 import home.smart.fly.scucommunity.content.Question;
@@ -75,8 +75,8 @@ public class IndexFragment extends Fragment implements SwipeRefreshLayout.OnRefr
         write.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext,"you write article",Toast.LENGTH_LONG).show();
-                Intent intent=new Intent(getActivity(), AnswerActivity.class);
+                Toast.makeText(mContext,"you ask",Toast.LENGTH_LONG).show();
+                Intent intent=new Intent(getActivity(), AskQuestionActivity.class);
                 startActivity(intent);
 
             }

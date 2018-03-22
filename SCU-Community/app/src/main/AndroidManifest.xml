@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".AnswerActivity" />
         <activity android:name=".Cusinfo"/>
+        <activity android:name=".AskQuestionActivity"/>
     </application>
 
 </manifest>
