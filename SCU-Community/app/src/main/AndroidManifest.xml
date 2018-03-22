@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".Login_MainActivity"
             android:label="川大问答">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +22,8 @@
         <activity android:name=".AnswerActivity" />
         <activity android:name=".Cusinfo"/>
         <activity android:name=".AskQuestionActivity"/>
+        <activity android:name="MainActivity"/>
+        <activity android:name=".RegisterActivity"/>
     </application>
 
 </manifest>
