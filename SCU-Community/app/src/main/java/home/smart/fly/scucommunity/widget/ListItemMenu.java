@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import home.smart.fly.scucommunity.R;
 
@@ -15,33 +17,39 @@ import home.smart.fly.scucommunity.R;
 
 public class ListItemMenu extends PopupWindow {
     private Context mContext ;
-    private LinearLayout quit,share;
+
 
 
     public ListItemMenu(int width, int height, Context mContext) {
+
         super(width, height);
         this.mContext = mContext;
-        InitView();
+        InitView( );
     }
 
     private void InitView() {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_menu, null);
+
         setContentView(view);
         setFocusable(true);
         setBackgroundDrawable(new ColorDrawable(00000000));
-        quit = (LinearLayout) view.findViewById(R.id.hidequestion);
-        share = (LinearLayout) view.findViewById(R.id.share);
-        quit.setOnClickListener(new View.OnClickListener() {
+        TextView like = (TextView) view.findViewById(R.id.like);
+        TextView collect = (TextView) view.findViewById(R.id.collect);
+        like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dismiss();
+                Toast.makeText(mContext, "like it", Toast.LENGTH_SHORT).show();
+
+
+
             }
         });
 
-        share.setOnClickListener(new View.OnClickListener() {
+        collect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dismiss();
+                Toast.makeText(mContext, "collect it", Toast.LENGTH_SHORT).show();
+
             }
         });
     }

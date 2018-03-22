@@ -2,6 +2,7 @@ package home.smart.fly.scucommunity.adapter;
 //recyclerview 实现界面2
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import home.smart.fly.scucommunity.AnswerActivity;
 import home.smart.fly.scucommunity.R;
 
 /**
@@ -48,6 +50,13 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerView
 
         View view = LayoutInflater.from(mContext).inflate(R.layout.sub_list_item, null);
         MyViewHolder holder = new MyViewHolder(view);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, AnswerActivity.class);
+                mContext.startActivity(intent);
+            }
+        });
         return holder;
     }
 

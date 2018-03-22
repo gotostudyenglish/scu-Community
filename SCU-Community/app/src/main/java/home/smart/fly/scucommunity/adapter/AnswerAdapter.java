@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import home.smart.fly.scucommunity.R;
-import home.smart.fly.scucommunity.entity.Answer;
+import home.smart.fly.scucommunity.content.Answer;
 
 /**
  * Created by lenovo on 2018/3/13.

@@ -7,11 +7,17 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.text.InputType;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,23 +27,21 @@ import home.smart.fly.scucommunity.fragments.FourFragment;
 import home.smart.fly.scucommunity.fragments.IndexFragment;
 import home.smart.fly.scucommunity.fragments.SecondFragment;
 import home.smart.fly.scucommunity.fragments.ThirdFragment;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends  android.support.v4.app.FragmentActivity {
     private final String TAG = MainActivity.class.getSimpleName();
     private Context mContext;
-
-
     private FrameLayout content;
     private AppBarLayout index_app_bar;
-
     private List<Fragment> fragments = new ArrayList<>();
-
     //View
     private RadioGroup rgs;
     private RadioButton index_tab;
     private int currentIndex = 0;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -97,4 +101,5 @@ public class MainActivity extends FragmentActivity {
             super.onBackPressed();
         }
     }
+
 }
