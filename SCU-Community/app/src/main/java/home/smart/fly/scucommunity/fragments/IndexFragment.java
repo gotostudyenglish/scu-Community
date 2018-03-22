@@ -1,5 +1,6 @@
 package home.smart.fly.scucommunity.fragments;
 //第一个界面，用了swipeRefreshLayout和RecyclerView，IndexRecyclerViewAdapter
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +27,9 @@ import home.smart.fly.scucommunity.R;
 import home.smart.fly.scucommunity.adapter.IndexRecyclerViewAdapter;
 import home.smart.fly.scucommunity.content.Question;
 import home.smart.fly.scucommunity.content.image;
+import home.smart.fly.scucommunity.util.HttpUtil;
+import home.smart.fly.scucommunity.util.Utility;
+import okhttp3.Callback;
 
 public class IndexFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private Context mContext;
@@ -38,6 +43,8 @@ public class IndexFragment extends Fragment implements SwipeRefreshLayout.OnRefr
     private View rootView;
     private FloatingActionMenu fam;
 
+
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -48,6 +55,14 @@ public class IndexFragment extends Fragment implements SwipeRefreshLayout.OnRefr
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_index, null);
+        for (int i=0;i<5;i++) {
+            image i1=new image();
+            image i2=new image();
+            i1.setImageId(R.drawable.image1);
+            i2.setImageId(R.drawable.image2);
+            imageList.add(i1);
+            imageList.add(i2);
+        }
         InitView();
         return rootView;
     }
@@ -77,16 +92,9 @@ public class IndexFragment extends Fragment implements SwipeRefreshLayout.OnRefr
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        List<image> imageList = new ArrayList<>();
-                        List<Question> QuestionList = new ArrayList<>();
-                        Question m =new Question();
-                        QuestionList.add(m);
-                        image a =new image();
-                        imageList.add(a);
-
-                        adapter.addItem(QuestionList,imageList);
+                        initQuestion();
                         swipeRefreshLayout.setRefreshing(false);
-                        Toast.makeText(mContext,"update 1 questions..",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext,"更新成功",Toast.LENGTH_SHORT).show();
                     }
                 },3000);
             }
@@ -133,18 +141,25 @@ public class IndexFragment extends Fragment implements SwipeRefreshLayout.OnRefr
 
     //初始化问题信息
     private void initQuestion(){
-       /* HttpUtil.sendOkHttpRequest("http://172.105.196.133:3000/question", new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
+         HttpUtil.sendOkHttpRequest("http://222.209.235.94:3000/question", new Callback() {
+             @Override
+             public void onFailure(okhttp3.Call call, IOException e) {
 
-            }
+             }
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String question = response.body().string();
-                QuestionList = Utility.handleQuestionResponse(question);
+             @Override
+             public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+                 String question = response.body().string();
+                 QuestionList = Utility.handleQuestionResponse(question);
+                 getActivity().runOnUiThread(new Runnable() {
+                     @Override
+                     public void run() {
+                         adapter = new IndexRecyclerViewAdapter(mContext,QuestionList,imageList);
+                         recyclerView.setAdapter(adapter);
+                     }
+                 });
+             }
+         });
 
-            }
-        });*/
     }
 }

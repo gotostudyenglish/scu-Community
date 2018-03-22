@@ -1,7 +1,5 @@
 package home.smart.fly.scucommunity.util;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -46,7 +44,6 @@ public class HttpUtil {
 
             @Override
             public void onResponse(okhttp3.Call call, Response response) throws IOException {
-                Log.i("HttpUtil","上传文件测试");
             }
         });
 

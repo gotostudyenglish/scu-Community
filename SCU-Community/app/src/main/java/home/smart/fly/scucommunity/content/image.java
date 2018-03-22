@@ -17,6 +17,7 @@ public class image {
     public void setImageId(int imageId) {
         this.imageId = imageId;
     }
+
     public void setProImageId(int proImageId){
         this.proImageId=proImageId;
 
