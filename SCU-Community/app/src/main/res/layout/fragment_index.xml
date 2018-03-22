@@ -43,14 +43,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/write"
+            android:id="@+id/write"
             fab:fab_label="写文章" />
 
-        <com.github.clans.fab.FloatingActionButton
-            style="@style/MenuButtonsSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/answer"
-            fab:fab_label="我的回答" />
+
 
 
 

@@ -2,6 +2,7 @@ package home.smart.fly.scucommunity.adapter;
 //recycler view 表示
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import home.smart.fly.scucommunity.AnswerActivity;
 import home.smart.fly.scucommunity.R;
 import home.smart.fly.scucommunity.content.Question;
 import home.smart.fly.scucommunity.content.image;
@@ -68,9 +70,16 @@ public class IndexRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
                 @Override
                 public void onClick(View view) {
                     int position = holder.getAdapterPosition();
-                    Question question = mQuestion.get(position);
-
-                    Toast.makeText(view.getContext(), "you click1" + question.gettitle(), Toast.LENGTH_SHORT).show();
+                    Question question = mQuestion.get(position-1);
+                    Intent intent = new Intent(mContext, AnswerActivity.class);
+                    intent.putExtra("question_id",question.getQuetsion_ID());
+                    intent.putExtra("question_uid",question.getuid());
+                    intent.putExtra("question_title",question.gettitle());
+                    intent.putExtra("question_content",question.getContent());
+                    intent.putExtra("question_name",question.getname());
+                    intent.putExtra("question_like",question.getlike());
+                    mContext.startActivity(intent);
+                    Toast.makeText(view.getContext(), "you click" + question.gettitle(), Toast.LENGTH_SHORT).show();
                 }
             });
 

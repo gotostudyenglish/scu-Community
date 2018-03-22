@@ -40,13 +40,13 @@
                 android:src="@drawable/profile" />
 
             <TextView
-                android:id="@+id/from_id"
+                android:id="@+id/text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/profile_image"
-                android:text="来自"
+                android:text="来自话题：社会"
                 android:textSize="15sp" />
         </RelativeLayout>
 
@@ -76,7 +76,8 @@
 
 
             <TextView
-                android:id="@+id/text"
+
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
@@ -108,7 +109,7 @@
 
 
                 <TextView
-                    android:id="@+id/like_sum"
+                    android:id="@+id/likenum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="225 赞" />
@@ -120,10 +121,10 @@
                     android:text="·" />
 
                 <TextView
-                    android:id="@+id/answer_sum"
+                    android:id="@+id/collectnum"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="23 评论" />
+                    android:text="23 收藏" />
 
 
 
@@ -131,7 +132,12 @@
 
         </LinearLayout>
 
-
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/liveList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:visibility="gone" />
 
 
     </LinearLayout>

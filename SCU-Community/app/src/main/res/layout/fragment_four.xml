@@ -64,6 +64,8 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
             <TextView
+                android:paddingTop="5dp"
+                android:id="@+id/intro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/cheese_ipsum" />
@@ -71,23 +73,29 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="10dp"
                 android:text="个性签名"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
             <TextView
+                android:id="@+id/signa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="5dp"
                 android:text="@string/cheese_ipsum" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="10dp"
                 android:text="感兴趣的话题"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
             <TextView
+                android:id="@+id/inter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="5dp"
                 android:text="@string/cheese_ipsum" />
 
         </LinearLayout>

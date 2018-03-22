@@ -6,6 +6,7 @@ package home.smart.fly.scucommunity.content;
 
 public class User {
     private int uid;
+    private String student_id;
     private String password;
     private String name;
     private String signature;
@@ -15,6 +16,9 @@ public class User {
 
     public int getUid(){
         return uid;
+    }
+    public String getStudent_id(){
+        return student_id;
     }
     public String getPassword(){
         return password;
@@ -35,6 +39,9 @@ public class User {
 
     public void setUid(int uid){
         this.uid = uid;
+    }
+    public void setStudent_id(String studengt_id){
+        this.student_id = studengt_id;
     }
     public void setPassword(String password){
         this.password = password;

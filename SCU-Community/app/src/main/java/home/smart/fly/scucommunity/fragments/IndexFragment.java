@@ -141,7 +141,7 @@ public class IndexFragment extends Fragment implements SwipeRefreshLayout.OnRefr
 
     //初始化问题信息
     private void initQuestion(){
-         HttpUtil.sendOkHttpRequest("http://222.209.235.94:3000/question", new Callback() {
+         HttpUtil.sendOkHttpRequest("http://182.149.199.213:3000/question", new Callback() {
              @Override
              public void onFailure(okhttp3.Call call, IOException e) {
 
