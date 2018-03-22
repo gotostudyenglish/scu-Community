@@ -1,6 +1,7 @@
 package home.smart.fly.scucommunity.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import home.smart.fly.scucommunity.Cusinfo;
 import home.smart.fly.scucommunity.R;
 
 import static home.smart.fly.scucommunity.R.id.headview;
@@ -50,6 +52,8 @@ public class FourFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), Cusinfo.class);
+                startActivity(intent);
                 Toast.makeText(getContext(), "编辑", Toast.LENGTH_SHORT).show();
             }
         });
