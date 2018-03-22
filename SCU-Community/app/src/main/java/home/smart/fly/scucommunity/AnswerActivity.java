@@ -26,6 +26,7 @@ public class AnswerActivity extends AppCompatActivity {
     private int question_id;
     private String question_name;
     private String question_content;
+    private String question_title;
 
 
     @Override
@@ -46,6 +47,11 @@ public class AnswerActivity extends AppCompatActivity {
         question_content = intent.getStringExtra("question_content");
         TextView content = (TextView)findViewById(R.id.textview_context);
         content.setText(question_content);
+
+        question_title = intent.getStringExtra("question_title");
+        TextView title = (TextView)findViewById(R.id.textview_title) ;
+        title.setText(question_title);
+
 
         initAnswer(qid);
         AnswerAdapter adapter = new AnswerAdapter(AnswerActivity.this, R.layout.answe_item,answerList);
