@@ -50,6 +50,17 @@ public class HttpUtil {
 
     }
 
+    /*向网络上传一个对象数组*/
+    public static <Type> void postOkHttpRefresh(String adress, List<Type> typeList,Callback callback){
+        OkHttpClient client = new OkHttpClient();
+        Gson gson = new Gson();
+        String json = gson.toJson(typeList);
+        RequestBody body = RequestBody.create(JSON,json);
+        Request request = new Request.Builder().url(adress).post(body).build();
+        client.newCall(request).enqueue(callback);
+
+    }
+
     /*根据键值返回一个*/
     public static void postOkHttpgetdata(String adress, String key, String value, Callback callback){
         OkHttpClient client = new OkHttpClient();

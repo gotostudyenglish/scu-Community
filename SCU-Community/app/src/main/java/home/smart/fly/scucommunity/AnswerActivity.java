@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -43,24 +42,22 @@ public class AnswerActivity extends AppCompatActivity {
     private EditText editText_answer;
     private ImageButton sent_answer;
     private String answer_content;
+    private String qid;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.answer);
-        Log.i("1111","第一个位置");
 
         SharedPreferences pref = getSharedPreferences("user_id_data",MODE_PRIVATE);
         user_id = pref.getInt("user_id",0);
         String uid= Integer.toString(user_id);
-        Log.i("1111",uid);
         findname(uid);
-        Log.i("2222","第二个位置");
 
         Intent intent = getIntent();
         question_id = intent.getIntExtra("question_id",0);
-        String qid = Integer.toString(question_id);
+        qid = Integer.toString(question_id);
 
         question_name = intent.getStringExtra("question_name");
         TextView name = (TextView)findViewById(R.id.textview_nickname);
@@ -78,17 +75,35 @@ public class AnswerActivity extends AppCompatActivity {
 
 
         editText_answer = (EditText)findViewById(R.id.edit_answer) ;
-        answer_content = editText_answer.getText().toString();
+
         sent_answer = (ImageButton)findViewById(R.id.imageButton);
         sent_answer.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                answer_content = editText_answer.getText().toString();
                 answer.setContent(answer_content);
                 answer.setName(user_name);
                 answer.setUid(user_id);
                 answer.setQuestion_ID(question_id);
                 answerListsend.add(answer);
-                HttpUtil.postOkHttpRequestion("http://182.149.199.213:3000/answer/update",answerListsend);
+                editText_answer.setText("");
+                Toast.makeText(AnswerActivity.this,"回答成功",Toast.LENGTH_SHORT).show();
+                HttpUtil.postOkHttpRefresh("http://182.149.199.213:3000/answer/update", answerListsend, new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                       runOnUiThread(new Runnable() {
+                           @Override
+                           public void run() {
+                               initAnswer(qid);
+                           }
+                       });
+                    }
+                });
             }
         });
 
@@ -115,14 +130,6 @@ public class AnswerActivity extends AppCompatActivity {
                 User useruu = new User();
                 useruu = userList.get(0);
                 user_name = useruu.getName();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(AnswerActivity.this, "打印"+user_name, Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-
             }
         });
     }

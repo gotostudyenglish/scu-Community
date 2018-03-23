@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@color/gray"
-        android:text="输入标题" />
+        android:hint="请输入标题" />
 
     <TextView
         android:id="@+id/textView5"
@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:inputType="textPersonName"
-        android:text="请输入您的提问或分享"
+        android:hint="请输入您的提问"
         android:ems="10"
         android:background="@color/gray"
         />
