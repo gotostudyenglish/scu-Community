@@ -33,7 +33,7 @@ public class ThirdFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_two, container, false);
+        rootView = inflater.inflate(R.layout.fragment_three, container, false);
         InitView();
         return rootView;
     }
@@ -45,16 +45,13 @@ public class ThirdFragment extends Fragment {
 
         //初始化TabLayout的title
         mTabLayout.addTab(mTabLayout.newTab().setText("我的提问"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("我的文章"));
 
         List<String> titles = new ArrayList<>();
         titles.add("我的提问");
-        titles.add("我的文章");
 
 
         //初始化ViewPager的数据集
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new SecondSubFragment());
         fragments.add(new SecondSubFragment());
         //创建ViewPager的adapter
         FragmentAdapter adapter = new FragmentAdapter(getChildFragmentManager(), fragments, titles);

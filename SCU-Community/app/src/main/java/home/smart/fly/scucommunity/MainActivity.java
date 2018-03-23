@@ -2,6 +2,7 @@ package home.smart.fly.scucommunity;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
@@ -11,10 +12,13 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -23,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import home.smart.fly.scucommunity.adapter.FragmentTabAdapter;
+import home.smart.fly.scucommunity.content.Question;
 import home.smart.fly.scucommunity.fragments.FourFragment;
 import home.smart.fly.scucommunity.fragments.IndexFragment;
 import home.smart.fly.scucommunity.fragments.SecondFragment;
@@ -32,7 +37,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 
-public class MainActivity extends  android.support.v4.app.FragmentActivity {
+public class MainActivity extends  FragmentActivity {
     private final String TAG = MainActivity.class.getSimpleName();
     private Context mContext;
     private FrameLayout content;
@@ -52,6 +57,36 @@ public class MainActivity extends  android.support.v4.app.FragmentActivity {
     }
 
     private void InitView() {
+        //得到问题的title和content
+        Intent intent =getIntent();
+        String qtitle=intent.getStringExtra("Qti");
+        String qcontent=intent.getStringExtra("Qcon");
+        Question newquestion =new Question();
+        newquestion.settitle(qtitle);
+        newquestion.setContent(qcontent);
+        Toast.makeText(mContext,intent.getStringExtra("search_item"),Toast.LENGTH_SHORT).show();
+
+
+        //搜索功能
+        Button search=(Button)findViewById(R.id.search);
+        TextView search1 =(TextView)findViewById(R.id.search1);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+        search1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        //
         content = (FrameLayout) findViewById(R.id.content);
         index_app_bar = (AppBarLayout) findViewById(R.id.index_app_bar);
         rgs = (RadioGroup) findViewById(R.id.tabs_rg);

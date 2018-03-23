@@ -6,7 +6,6 @@ import com.google.gson.reflect.TypeToken;
 import java.util.List;
 
 import home.smart.fly.scucommunity.content.Answer;
-import home.smart.fly.scucommunity.content.Collection;
 import home.smart.fly.scucommunity.content.Question;
 import home.smart.fly.scucommunity.content.User;
 
@@ -21,13 +20,6 @@ public class Utility {
         Gson gson = new Gson();
         List<Answer> answerList = gson.fromJson(response,new TypeToken<List<Answer>>(){}.getType());
         return answerList;
-    }
-
-    /*解析和处理服务器返回的收藏类*/
-    public static List<Collection> handleCollectionResponse(String response){
-        Gson gson = new Gson();
-        List<Collection> CollectionList = gson.fromJson(response,new TypeToken<List<Collection>>(){}.getType());
-        return CollectionList;
     }
 
     /*解析和处理服务器返回的问题类*/

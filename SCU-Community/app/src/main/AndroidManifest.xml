@@ -10,20 +10,23 @@
         android:label="川大问答"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".Login_MainActivity"
-            android:label="川大问答">
+        <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Login_MainActivity"
+            android:label="川大问答">
+        </activity>
         <activity android:name=".AnswerActivity" />
-        <activity android:name=".Cusinfo"/>
-        <activity android:name=".AskQuestionActivity"/>
-        <activity android:name="MainActivity"/>
-        <activity android:name=".RegisterActivity"/>
+        <activity android:name=".Cusinfo" />
+        <activity android:name=".AskQuestionActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".SearchActivity"/>
     </application>
 
 </manifest>
