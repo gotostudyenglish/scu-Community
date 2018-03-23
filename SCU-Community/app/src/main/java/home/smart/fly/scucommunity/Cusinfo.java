@@ -51,7 +51,7 @@ public class Cusinfo extends AppCompatActivity {
                 cusinfo.setSignature(signa);
                 cusinfo.setHabit(inter);
                 userlist.add(cusinfo);
-                HttpUtil.postOkHttpRequestion("http://182.149.199.213:3000/users/update",userlist);
+                HttpUtil.postOkHttpRequestion("http://172.105.196.133:3000/users/update",userlist);
                 Intent intent = new Intent(Cusinfo.this, MainActivity.class);
                 startActivity(intent);
                 Toast.makeText(getApplicationContext(),"修改成功",Toast.LENGTH_SHORT).show();

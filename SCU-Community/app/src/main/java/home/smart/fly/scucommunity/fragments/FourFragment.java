@@ -57,7 +57,7 @@ public class FourFragment extends Fragment {
         SharedPreferences preferences = getActivity().getSharedPreferences("user_id_data",getActivity().MODE_PRIVATE);
         int user_id = preferences.getInt("user_id",0);
         String tmp = Integer.toString(user_id);
-        HttpUtil.postOkHttpgetdata("http://182.149.199.213:3000/users/queryById", "uid", tmp, new Callback() {
+        HttpUtil.postOkHttpgetdata("http://172.105.196.133:3000/users/queryById", "uid", tmp, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
             }

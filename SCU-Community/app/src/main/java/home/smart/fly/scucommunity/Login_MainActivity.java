@@ -44,7 +44,7 @@ public class Login_MainActivity extends AppCompatActivity {
                 str1=editText1.getText().toString();
                 EditText editText2 =(EditText)findViewById(R.id.password_et);
                 str2=editText2.getText().toString();
-                HttpUtil.postOkHttpgetdata("http://182.149.199.213:3000/users/queryByStuId", "student_id", str1, new Callback() {
+                HttpUtil.postOkHttpgetdata("http://172.105.196.133:3000/users/queryByStuId", "student_id", str1, new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
                     }

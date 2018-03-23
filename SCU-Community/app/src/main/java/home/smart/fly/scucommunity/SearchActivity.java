@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
+
 /**
  * Created by MWM on 2018/3/23.
  */
@@ -46,6 +47,7 @@ public class SearchActivity extends AppCompatActivity{
             public boolean onQueryTextSubmit(String newtext) {
                 Intent intent =new Intent(SearchActivity.this,MainActivity.class);
                 intent.putExtra("search_item",newtext);
+                intent.putExtra("judge",1);
                 startActivity(intent);
                 return false;
             }

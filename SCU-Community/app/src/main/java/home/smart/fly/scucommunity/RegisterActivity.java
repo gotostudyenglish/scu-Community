@@ -45,7 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
                 user.setPassword(str2);
                 user.setStudent_id(str3);
                 userlist.add(user);
-                HttpUtil.postOkHttpRequestion("http://182.149.199.213:3000/users/register",userlist);
+                HttpUtil.postOkHttpRequestion("http://172.105.196.133:3000/users/register",userlist);
                 Intent intent = new Intent(RegisterActivity.this, Login_MainActivity.class);
                 startActivity(intent);
             }

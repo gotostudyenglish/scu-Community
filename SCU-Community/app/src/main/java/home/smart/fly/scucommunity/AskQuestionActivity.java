@@ -58,7 +58,7 @@ public class AskQuestionActivity extends AppCompatActivity {
                 question.setname(user_name);
                 question.settitle(title);
                 questionList.add(question);
-                HttpUtil.postOkHttpRequestion("http://182.149.199.213:3000/question/post",questionList);
+                HttpUtil.postOkHttpRequestion("http://172.105.196.133:3000/question/post",questionList);
                 Intent intent =new Intent(AskQuestionActivity.this,MainActivity.class);
                 startActivity(intent);
                 Toast.makeText(view.getContext(),"上传成功",Toast.LENGTH_SHORT).show();
@@ -69,7 +69,7 @@ public class AskQuestionActivity extends AppCompatActivity {
 
     }
     private void findname(String uid){
-        HttpUtil.postOkHttpgetdata("http://182.149.199.213:3000/users/queryById", "uid", uid, new Callback() {
+        HttpUtil.postOkHttpgetdata("http://172.105.196.133:3000/users/queryById", "uid", uid, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
 

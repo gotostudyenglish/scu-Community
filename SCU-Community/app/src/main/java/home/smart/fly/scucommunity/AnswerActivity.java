@@ -88,7 +88,7 @@ public class AnswerActivity extends AppCompatActivity {
                 answerListsend.add(answer);
                 editText_answer.setText("");
                 Toast.makeText(AnswerActivity.this,"回答成功",Toast.LENGTH_SHORT).show();
-                HttpUtil.postOkHttpRefresh("http://182.149.199.213:3000/answer/update", answerListsend, new Callback() {
+                HttpUtil.postOkHttpRefresh("http://172.105.196.133:3000/answer/update", answerListsend, new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
 
@@ -117,7 +117,7 @@ public class AnswerActivity extends AppCompatActivity {
     }
 
     private void findname(String uid){
-        HttpUtil.postOkHttpgetdata("http://182.149.199.213:3000/users/queryById", "uid", uid, new Callback() {
+        HttpUtil.postOkHttpgetdata("http://172.105.196.133:3000/users/queryById", "uid", uid, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
 
@@ -135,7 +135,7 @@ public class AnswerActivity extends AppCompatActivity {
     }
 
     private void initAnswer(String qid){
-        HttpUtil.postOkHttpgetdata("http://182.149.199.213:3000/answer/queryById", "Question_ID", qid, new Callback() {
+        HttpUtil.postOkHttpgetdata("http://172.105.196.133:3000/answer/queryById", "Question_ID", qid, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
 

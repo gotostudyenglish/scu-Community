@@ -87,7 +87,7 @@ public class SecondSubFragment extends Fragment implements SwipeRefreshLayout.On
     }
 
     private void initQuestion(String uid){
-       HttpUtil.postOkHttpgetdata("http://182.149.199.213:3000/question/queryById", "uid", uid, new Callback() {
+       HttpUtil.postOkHttpgetdata("http://172.105.196.133:3000/question/queryById", "uid", uid, new Callback() {
            @Override
            public void onFailure(Call call, IOException e) {
 

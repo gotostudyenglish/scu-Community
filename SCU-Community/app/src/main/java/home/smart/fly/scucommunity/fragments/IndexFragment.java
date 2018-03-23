@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,9 @@ import home.smart.fly.scucommunity.content.Question;
 import home.smart.fly.scucommunity.content.image;
 import home.smart.fly.scucommunity.util.HttpUtil;
 import home.smart.fly.scucommunity.util.Utility;
+import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.Response;
 
 public class IndexFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private Context mContext;
@@ -42,6 +45,8 @@ public class IndexFragment extends Fragment implements SwipeRefreshLayout.OnRefr
     //
     private View rootView;
     private FloatingActionMenu fam;
+    private int judge ;
+    private String serch;
 
 
 
@@ -55,6 +60,10 @@ public class IndexFragment extends Fragment implements SwipeRefreshLayout.OnRefr
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_index, null);
+        judge = 0;
+        Intent intent = getActivity().getIntent();
+        serch = intent.getStringExtra("search_item");
+        judge = intent.getIntExtra("judge",0);
         for (int i=0;i<5;i++) {
             image i1=new image();
             image i2=new image();
@@ -92,6 +101,7 @@ public class IndexFragment extends Fragment implements SwipeRefreshLayout.OnRefr
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        judge = 0;
                         initQuestion();
                         swipeRefreshLayout.setRefreshing(false);
                         Toast.makeText(mContext,"更新成功",Toast.LENGTH_SHORT).show();
@@ -141,25 +151,50 @@ public class IndexFragment extends Fragment implements SwipeRefreshLayout.OnRefr
 
     //初始化问题信息
     private void initQuestion(){
-         HttpUtil.sendOkHttpRequest("http://182.149.199.213:3000/question", new Callback() {
-             @Override
-             public void onFailure(okhttp3.Call call, IOException e) {
+        if(judge == 0){
+            HttpUtil.sendOkHttpRequest("http://172.105.196.133:3000/question", new Callback() {
+                @Override
+                public void onFailure(okhttp3.Call call, IOException e) {
 
-             }
+                }
 
-             @Override
-             public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
-                 String question = response.body().string();
-                 QuestionList = Utility.handleQuestionResponse(question);
-                 getActivity().runOnUiThread(new Runnable() {
-                     @Override
-                     public void run() {
-                         adapter = new IndexRecyclerViewAdapter(mContext,QuestionList,imageList);
-                         recyclerView.setAdapter(adapter);
-                     }
-                 });
-             }
-         });
+                @Override
+                public void onResponse(okhttp3.Call call, okhttp3.Response response) throws IOException {
+                    String question = response.body().string();
+                    QuestionList = Utility.handleQuestionResponse(question);
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            adapter = new IndexRecyclerViewAdapter(mContext,QuestionList,imageList);
+                            recyclerView.setAdapter(adapter);
+                        }
+                    });
+                }
+            });
+        }
+        else{
+            HttpUtil.postOkHttpgetdata("http://172.105.196.133:3000/question/queryByTitle", "title", serch, new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    String question = response.body().string();
+                   Log.i("11111",question);
+                    QuestionList = Utility.handleQuestionResponse(question);
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            adapter = new IndexRecyclerViewAdapter(mContext,QuestionList,imageList);
+                            recyclerView.setAdapter(adapter);
+                        }
+                    });
+                }
+            });
+        }
+
 
     }
 }
