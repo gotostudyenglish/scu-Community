@@ -99,7 +99,7 @@ public class IndexRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
         }
         else if (holder instanceof MyViewHolder) {
 
-            Question question = mQuestion.get(position-1);
+            final Question question = mQuestion.get(position-1);
             image image1 = mimage.get(position-1);
 
 
@@ -114,7 +114,7 @@ public class IndexRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.
             ((MyViewHolder)holder).menu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ListItemMenu menu = new ListItemMenu(menuW, menuH, mContext);
+                    ListItemMenu menu = new ListItemMenu(menuW, menuH, mContext,question );
                     menu.update();
                     int offx = ScreenUtil.dip2px(mContext, 24);
                     int offy = ScreenUtil.dip2px(mContext, 24);
