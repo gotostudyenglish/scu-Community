@@ -42,10 +42,8 @@ public class ThirdFragment extends Fragment {
     private void InitView() {
         mTabLayout = (TabLayout) rootView.findViewById(R.id.tabs);
         mViewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
-
         //初始化TabLayout的title
         mTabLayout.addTab(mTabLayout.newTab().setText("我的提问"));
-
         List<String> titles = new ArrayList<>();
         titles.add("我的提问");
 
@@ -53,11 +51,10 @@ public class ThirdFragment extends Fragment {
         //初始化ViewPager的数据集
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new SecondSubFragment());
-        //创建ViewPager的adapter
+
+
         FragmentAdapter adapter = new FragmentAdapter(getChildFragmentManager(), fragments, titles);
         mViewPager.setAdapter(adapter);
-        //关联TabLayout与ViewPager
-        //同时也要覆写PagerAdapter的getPageTitle方法，否则Tab没有title
         mTabLayout.setupWithViewPager(mViewPager);
         mTabLayout.setTabsFromPagerAdapter(adapter);
 

@@ -1,6 +1,7 @@
 package home.smart.fly.scucommunity.fragments;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -12,15 +13,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.github.clans.fab.FloatingActionButton;
-
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import home.smart.fly.scucommunity.R;
 import home.smart.fly.scucommunity.adapter.SubRecyclerViewAdapter;
 import home.smart.fly.scucommunity.content.Question;
-import home.smart.fly.scucommunity.content.image;
+import home.smart.fly.scucommunity.util.HttpUtil;
+import home.smart.fly.scucommunity.util.Utility;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class SecondSubFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private Context mContext;
@@ -29,6 +35,8 @@ public class SecondSubFragment extends Fragment implements SwipeRefreshLayout.On
     private SubRecyclerViewAdapter adapter;
     private View rootView;
     private List<Question> QuestionList = new ArrayList<>();
+    private String uid;
+    private int user_id;
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -49,13 +57,17 @@ public class SecondSubFragment extends Fragment implements SwipeRefreshLayout.On
         swipeRefreshLayout.setProgressViewOffset(false, 0, (int) (mContext.getResources().getDisplayMetrics().density * 64));
         swipeRefreshLayout.setOnRefreshListener(this);
 
+        SharedPreferences pref = getActivity().getSharedPreferences("user_id_data",MODE_PRIVATE);
+        user_id = pref.getInt("user_id",0);
+        uid= Integer.toString(user_id);
+
+
 
         //recycler表示
-        initQuestion();
+        initQuestion(uid);
         recyclerView = (RecyclerView) rootView.findViewById(R.id.subrecyclerview);
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         recyclerView.setLayoutManager(manager);
-
 
         adapter = new SubRecyclerViewAdapter(mContext, QuestionList);
         recyclerView.setAdapter(adapter);
@@ -74,24 +86,26 @@ public class SecondSubFragment extends Fragment implements SwipeRefreshLayout.On
 
     }
 
-    private void initQuestion(){for (int i=0;i<2;i++) {
-        Question q1 = new Question();
-        Question q2 = new Question();
+    private void initQuestion(String uid){
+       HttpUtil.postOkHttpgetdata("http://182.149.199.213:3000/question/queryById", "uid", uid, new Callback() {
+           @Override
+           public void onFailure(Call call, IOException e) {
 
-        q1.settitle("my 213t title");
+           }
 
-        q1.setlike(50);
-        q1.setContent("21213312312321");
-        q1.setname("122223safas22");
-        q2.settitle("my fidfavvvvve");
-
-        q2.setlike(666);
-        q2.setContent("213QWRWRQvvvvRQRQ12321");
-        q2.setname("12sd3");
-        QuestionList.add(q1);
-        QuestionList.add(q2);
-
-    }
+           @Override
+           public void onResponse(Call call, Response response) throws IOException {
+               String ques = response.body().string();
+               QuestionList = Utility.handleQuestionResponse(ques);
+               getActivity().runOnUiThread(new Runnable() {
+                   @Override
+                   public void run() {
+                       adapter = new SubRecyclerViewAdapter(mContext, QuestionList);
+                       recyclerView.setAdapter(adapter);
+                   }
+               });
+           }
+       });
 
     }
 }

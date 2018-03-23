@@ -2,6 +2,7 @@ package home.smart.fly.scucommunity.adapter;
 //recyclerview 实现界面2
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import home.smart.fly.scucommunity.AnswerActivity;
 import home.smart.fly.scucommunity.R;
 import home.smart.fly.scucommunity.content.Question;
 
@@ -61,8 +63,18 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 @Override
                 public void onClick(View view) {
                     int position = holder.getAdapterPosition();
-                    Question question = mQuestion.get(position - mHeaderCount);
 
+                    Question question = mQuestion.get(position - mHeaderCount);
+                    Intent intent = new Intent(mContext, AnswerActivity.class);
+                    intent.putExtra("question_id",question.getQuetsion_ID());
+                    intent.putExtra("question_uid",question.getuid());
+                    intent.putExtra("question_title",question.gettitle());
+                    intent.putExtra("question_content",question.getContent());
+                    intent.putExtra("question_name",question.getname());
+                    intent.putExtra("question_like",question.getlike());
+                    mContext.startActivity(intent);
+
+                    Toast.makeText(view.getContext(), "you click" + question.gettitle(), Toast.LENGTH_SHORT).show();
                     Toast.makeText(view.getContext(), "you click1" + question.gettitle(), Toast.LENGTH_SHORT).show();
                 }
 

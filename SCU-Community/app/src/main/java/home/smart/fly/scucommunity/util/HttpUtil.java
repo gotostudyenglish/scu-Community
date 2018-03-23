@@ -64,7 +64,6 @@ public class HttpUtil {
     /*根据键值返回一个*/
     public static void postOkHttpgetdata(String adress, String key, String value, Callback callback){
         OkHttpClient client = new OkHttpClient();
-
         FormBody.Builder builder = new FormBody.Builder();
         builder.add(key,value );
         RequestBody body = builder.build();
